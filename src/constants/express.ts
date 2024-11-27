@@ -28,7 +28,7 @@ const expressConstants: ExpressConstants = {
     },
     ROUTER_PATH: {
         APIS: {
-            BASE_PATH: "/apis",
+            BASE_PATH: "/api",
             USERS: "/users",
             ID_PARAM: "/:id",
             INDEX: "/",

@@ -12,7 +12,9 @@ userApiRoutes.post("/login", (...arg: [CustomRequest, Response, NextFunction]): 
     UserContext.getControllerContext().login(...arg);
 });
 
-userApiRoutes.use(AuthContext.getMiddlewareContext().checkAuth);
+userApiRoutes.use((...arg: [CustomRequest, Response, NextFunction]): void => {
+    AuthContext.getMiddlewareContext().checkAuth(...arg);
+});
 
 // GET routes
 userApiRoutes.get(expressConstants.ROUTER_PATH.APIS.ME, (...arg: [CustomRequest, Response, NextFunction]): void => {
