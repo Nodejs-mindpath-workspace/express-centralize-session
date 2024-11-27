@@ -10,7 +10,7 @@ const expressConstants: ExpressConstants = {
     EXPRESS_SESSION: (): SessionOptions => {
         const options: SessionOptions = {
             store: MongoStore.create({
-                mongoUrl: "",
+                mongoUrl: dotEnv.MONGODB_CONNECTION_STRING,
                 dbName: "sessions",
                 ttl: 14 * 24 * 60 * 60, // = 14 days. Default
                 autoRemove: "native", // Remove expired sessions

@@ -11,11 +11,11 @@ import constants from "./constants/constant";
 import dotEnv from "./constants/dotEnv";
 import expressConstants from "./constants/express";
 import MongoDB from "./databases";
+import ErrorMiddleware from "./middlewares/error";
+import apiRoutes from "./routes/apis";
 import logger from "./swaggers/helpers/logger";
 import SwaggerHelper from "./swaggers/helpers/swagger";
 import IServeSwaggerOptions from "./swaggers/interfaces/swaggerOptions";
-import apiRoutes from "./routes/apis";
-import ErrorMiddleware from "./middlewares/error";
 
 const app: express.Express = express();
 const port: number = dotEnv.PORT;
@@ -49,7 +49,7 @@ const swaggerOptions: IServeSwaggerOptions = {
     routePaths: [
         {
             filePath: join(__dirname, "routes/apis"),
-            urlBasePath: "/api",
+            urlBasePath: "/apis",
         },
     ],
     definition: {
