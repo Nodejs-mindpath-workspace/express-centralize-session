@@ -11,6 +11,7 @@ import constants from "./constants/constant";
 import dotEnv from "./constants/dotEnv";
 import expressConstants from "./constants/express";
 import MongoDB from "./databases";
+import ExpressInterceptor from "./helpers/express";
 import ErrorMiddleware from "./middlewares/error";
 import apiRoutes from "./routes/apis";
 import logger from "./swaggers/helpers/logger";
@@ -23,14 +24,23 @@ const mongodbConnectionString: string = dotEnv.MONGODB_CONNECTION_STRING;
 
 MongoDB.connect(mongodbConnectionString);
 
+
+// Use 'qs' instead of 'querystring'
+// app.set('query parser', 'extended');
+
 // middleware
 app.use(helmet.hsts({ maxAge: 123456 }));
 app.use(express.json());
+app.use(express.text());
 app.use(express.urlencoded({ extended: false, limit: "50mb" }));
 app.use(morgan("dev"));
 
 // set up express sessions
 app.use(session(expressConstants.EXPRESS_SESSION()));
+
+// INTERCEPTOR:
+app.use((...arg) => new ExpressInterceptor().interceptRequest(...arg));
+app.use((...arg) => new ExpressInterceptor().interceptResponse(...arg));
 
 // API Routes
 app.use(expressConstants.ROUTER_PATH.APIS.BASE_PATH, apiRoutes);

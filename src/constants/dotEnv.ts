@@ -7,6 +7,9 @@ const dotEnv: DotEnv = {
     SITE_URL: process.env.SITE_URL ?? constants.LITERALS.STRING.EMPTY(),
     EXPRESS_SESSION_SECRET: process.env.EXPRESS_SESSION_SECRET ?? constants.LITERALS.STRING.EMPTY(),
     MONGODB_CONNECTION_STRING: process.env.MONGODB_CONNECTION_STRING ?? constants.LITERALS.STRING.EMPTY(),
+    PRIVATE_KEY: process.env.PRIVATE_KEY ?? constants.LITERALS.STRING.EMPTY(),
+    PASSPHRASE: process.env.PASSPHRASE ?? constants.LITERALS.STRING.EMPTY(),
+    PUBLIC_ENCRYPTION_KEY: process.env.PUBLIC_ENCRYPTION_KEY ?? constants.LITERALS.STRING.EMPTY(),
 };
 
 export default dotEnv;

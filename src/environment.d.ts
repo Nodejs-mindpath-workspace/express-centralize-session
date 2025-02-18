@@ -7,6 +7,9 @@ declare global {
             SITE_URL: string;
             EXPRESS_SESSION_SECRET: string;
             MONGODB_CONNECTION_STRING: string;
+            PRIVATE_KEY: string;
+            PASSPHRASE: string;
+            PUBLIC_ENCRYPTION_KEY: string;
         }
     }
 }
