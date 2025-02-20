@@ -2,7 +2,6 @@ import { NextFunction, Request, Response } from "express";
 
 import CryptoHelper from "./crypto/crypto";
 
-
 export default class ExpressInterceptor {
     private _parseQueryParams(queryParams: qs.ParsedQs): qs.ParsedQs {
         const parsedQueryParams: qs.ParsedQs = {};
@@ -31,7 +30,11 @@ export default class ExpressInterceptor {
             // Override the json function
             res.send = function (body) {
                 if (typeof body === "object" && body?.data) {
-                    const ModifybodyJson = { ...body, data: new CryptoHelper().encrypt(body.data) };
+                    const { encrypted, meta } = new CryptoHelper().encryptDataUsingRsaWithAes(body.data);
+                    const ModifybodyJson = { ...body, data: encrypted };
+                    res.setHeader("__acr", meta.encryptedKey); // NOTE: __acr is used to set in encrypted aes key for the cipher.
+                    res.setHeader("__nob", meta.iv); // NOTE: __nob is used to set in initialization vector for the cipher.
+                    res.setHeader("__atg", meta.authTag); // NOTE: __atg is used to set the gcm auth tag which is used to set the cipher.
                     return originalSend.call(res, ModifybodyJson);
                 }
 

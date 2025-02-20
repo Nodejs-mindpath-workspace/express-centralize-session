@@ -24,7 +24,6 @@ const mongodbConnectionString: string = dotEnv.MONGODB_CONNECTION_STRING;
 
 MongoDB.connect(mongodbConnectionString);
 
-
 // Use 'qs' instead of 'querystring'
 // app.set('query parser', 'extended');
 
