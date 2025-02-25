@@ -11,7 +11,7 @@ import constants from "./constants/constant";
 import dotEnv from "./constants/dotEnv";
 import expressConstants from "./constants/express";
 import MongoDB from "./databases";
-import ExpressInterceptor from "./helpers/express";
+// import ExpressInterceptor from "./helpers/express";
 import ErrorMiddleware from "./middlewares/error";
 import apiRoutes from "./routes/apis";
 import logger from "./swaggers/helpers/logger";
@@ -38,8 +38,8 @@ app.use(morgan("dev"));
 app.use(session(expressConstants.EXPRESS_SESSION()));
 
 // INTERCEPTOR:
-app.use((...arg) => new ExpressInterceptor().interceptRequest(...arg));
-app.use((...arg) => new ExpressInterceptor().interceptResponse(...arg));
+// app.use((...arg) => new ExpressInterceptor().interceptRequest(...arg));
+// app.use((...arg) => new ExpressInterceptor().interceptResponse(...arg));
 
 // API Routes
 app.use(expressConstants.ROUTER_PATH.APIS.BASE_PATH, apiRoutes);
@@ -58,7 +58,7 @@ const swaggerOptions: IServeSwaggerOptions = {
     routePaths: [
         {
             filePath: join(__dirname, "routes/apis"),
-            urlBasePath: "/apis",
+            urlBasePath: "/api",
         },
     ],
     definition: {

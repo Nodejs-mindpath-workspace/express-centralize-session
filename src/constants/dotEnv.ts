@@ -10,6 +10,10 @@ const dotEnv: DotEnv = {
     PRIVATE_KEY: process.env.PRIVATE_KEY ?? constants.LITERALS.STRING.EMPTY(),
     PASSPHRASE: process.env.PASSPHRASE ?? constants.LITERALS.STRING.EMPTY(),
     PUBLIC_ENCRYPTION_KEY: process.env.PUBLIC_ENCRYPTION_KEY ?? constants.LITERALS.STRING.EMPTY(),
+    INTUIT_CLIENT_ID: process.env.INTUIT_CLIENT_ID ?? constants.LITERALS.STRING.EMPTY(),
+    INTUIT_CLIENT_SECRET: process.env.INTUIT_CLIENT_SECRET ?? constants.LITERALS.STRING.EMPTY(),
+    INTUIT_REDIRECT_URI: process.env.INTUIT_REDIRECT_URI ?? constants.LITERALS.STRING.EMPTY(),
+    INTUIT_ENVIRONMENT: process.env.INTUIT_ENVIRONMENT ?? constants.LITERALS.STRING.EMPTY(),
 };
 
 export default dotEnv;

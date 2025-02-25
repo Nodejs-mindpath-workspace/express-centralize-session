@@ -7,6 +7,10 @@ type DotEnv = {
     PRIVATE_KEY: string;
     PASSPHRASE: string;
     PUBLIC_ENCRYPTION_KEY: string;
+    INTUIT_CLIENT_ID: string;
+    INTUIT_CLIENT_SECRET: string;
+    INTUIT_REDIRECT_URI: string;
+    INTUIT_ENVIRONMENT: string;
 };
 
 export default DotEnv;

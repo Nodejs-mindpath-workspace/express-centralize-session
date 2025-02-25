@@ -14,6 +14,9 @@ type ExpressConstants = {
             INDEX: string;
             ME: string;
             LOGIN: string;
+            AUTH: string;
+            CALLBACK: string;
+            INTUIT: string;
         };
     };
 };

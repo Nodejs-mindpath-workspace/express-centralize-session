@@ -34,6 +34,9 @@ const expressConstants: ExpressConstants = {
             INDEX: "/",
             ME: "/me",
             LOGIN: "/login",
+            AUTH: "/auth",
+            CALLBACK: "/callback",
+            INTUIT: "/intuit",
         },
     },
 };
