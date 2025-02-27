@@ -1,10 +1,9 @@
-
-const OAuthClient = require('intuit-oauth');
+const OAuthClient = require("intuit-oauth");
 
 export default class IntuitService {
     private _intuitClient: any;
 
-    private _getOAuthClient() { 
+    private _getOAuthClient() {
         if (!this._intuitClient) {
             this._intuitClient = new OAuthClient({
                 clientId: process.env.INTUIT_CLIENT_ID,
@@ -21,7 +20,7 @@ export default class IntuitService {
         const oauthClient = this._getOAuthClient();
         const authUri = oauthClient.authorizeUri({
             scope: [OAuthClient.scopes.Accounting, OAuthClient.scopes.OpenId],
-            state: 'testState',
+            state: "testState",
         });
         return authUri;
     }

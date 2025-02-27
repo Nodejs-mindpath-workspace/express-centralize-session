@@ -14,6 +14,6 @@ intuitAuthApiRoutes.get(expressConstants.ROUTER_PATH.APIS.CALLBACK, (...arg) => 
 // Route: /api/intuit
 intuitAuthApiRoutes.get(expressConstants.ROUTER_PATH.APIS.INDEX, (...arg) => {
     IntuitContext.getControllerContext().getAuthLoginUrl(...arg);
-})
+});
 
 export default intuitAuthApiRoutes;

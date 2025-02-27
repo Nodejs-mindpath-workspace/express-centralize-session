@@ -6,14 +6,12 @@ import { CryptoEncryptedDataResponse, CryptoEncryptedMetaData } from "../../type
 
 export default class CryptoHelper {
     private _publicDecryptAESKey(encryptedKey: string) {
-        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         return crypto.publicDecrypt(dotEnv.PUBLIC_ENCRYPTION_KEY!, Buffer.from(encryptedKey, "base64"));
     }
 
     private _decryptAESKey(encryptedKey: string) {
         return crypto.privateDecrypt(
             {
-                // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
                 key: dotEnv.PRIVATE_KEY!,
                 passphrase: dotEnv.PASSPHRASE,
             },
@@ -25,7 +23,6 @@ export default class CryptoHelper {
         const buffer = Buffer.from(JSON.stringify(data), "utf8");
         const encrypted = crypto.privateEncrypt(
             {
-                // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
                 key: dotEnv.PRIVATE_KEY!,
                 passphrase: dotEnv.PASSPHRASE,
             },
@@ -38,7 +35,6 @@ export default class CryptoHelper {
         const buffer = Buffer.from(data, "base64");
         const decrypted = crypto.privateDecrypt(
             {
-                // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
                 key: dotEnv.PRIVATE_KEY!,
                 passphrase: dotEnv.PASSPHRASE,
             },
@@ -49,17 +45,13 @@ export default class CryptoHelper {
 
     public publicDecrypt<T>(data: string): T {
         const buffer = Buffer.from(data, "base64");
-        const decrypted = crypto.publicDecrypt(
-            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-            dotEnv.PUBLIC_ENCRYPTION_KEY!,
-            buffer,
-        );
+        const decrypted = crypto.publicDecrypt(dotEnv.PUBLIC_ENCRYPTION_KEY!, buffer);
         return JSON.parse(decrypted.toString("utf8"));
     }
 
     public publicEncrypt<T>(data: T): string {
         const buffer = Buffer.from(JSON.stringify(data));
-        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+
         const encrypted = crypto.publicEncrypt(dotEnv.PUBLIC_ENCRYPTION_KEY!, buffer);
         return encrypted.toString("base64");
     }

@@ -11,16 +11,16 @@ export default class IntuitController {
         this._intuitService = intuitService;
     }
 
-    public getAuthLoginUrl(_req: Request, res: Response, next: NextFunction) {
+    public getAuthLoginUrl(_req: Request, res: Response, next: NextFunction): void {
         try {
-            const authUri = this._intuitService.getAuthUrl();
+            const authUri: string = this._intuitService.getAuthUrl();
             res.status(StatusCodes.OK).redirect(authUri);
         } catch (error) {
             next(error);
         }
     }
 
-    public async getAuthCallback(req: Request, res: Response, next: NextFunction) {
+    public async getAuthCallback(req: Request, res: Response, next: NextFunction): Promise<void> {
         try {
             const client = await this._intuitService.getAccessToken(req.url);
             res.status(StatusCodes.OK).send(client);
